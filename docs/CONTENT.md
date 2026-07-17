@@ -76,7 +76,7 @@ This replaces the generic trust-badge placeholder copy ("Expert Stylists", "Hygi
 - WhatsApp: +91 88279 87837
 
 ## Still needed from Prerna
-- Bridal Makeup: suitable-for notes + product lists for the 3 packages above
+- Bridal Makeup: suitable-for notes + product lists for the 3 packages above (seeded and live at [/services](https://prerna-beauty-bliss.vercel.app/services), prices only)
 - Categories beyond Party Makeup and Bridal Makeup (Mehendi, Hairstyle, Draping, etc.) with the same level of detail
 - Package add-ons, if any (e.g. extra hairstyle change, saree draping add-on)
 - Stylist roster (names, photos, specialties, bios, socials)
