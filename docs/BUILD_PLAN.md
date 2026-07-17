@@ -76,8 +76,8 @@ No online booking or payments in this build — every "Book Now" hands off to In
 - [ ] Final categories/packages/prices/products list from Prerna
 - [ ] Stylist roster (photos, names, specialties, bios, social handles) from Prerna
 - [ ] Before/after photos for portfolio gallery from Prerna
-- [ ] Instagram handle confirmed (business/creator account, DMs open)
-- [ ] WhatsApp business number confirmed
+- [x] Instagram handle confirmed (business/creator account, DMs open) — @prerna_beauty_bliss_
+- [x] WhatsApp business number confirmed — +91 88279 87837
 - [ ] List of service areas from Prerna
 
 ---

@@ -52,10 +52,13 @@ This replaces the generic trust-badge placeholder copy ("Expert Stylists", "Hygi
 
 ---
 
+## Contact details (confirmed)
+- Instagram: [@prerna_beauty_bliss_](https://www.instagram.com/prerna_beauty_bliss_/) — verified live account ("Prerna | Vidisha based | Makeup artist")
+- WhatsApp: +91 88279 87837
+
 ## Still needed from Prerna
 - Categories beyond Party Makeup (Bridal Makeup, Mehendi, Hairstyle, Draping, etc.) with the same level of detail
 - Package add-ons, if any (e.g. extra hairstyle change, saree draping add-on)
 - Stylist roster (names, photos, specialties, bios, socials)
 - Before/after portfolio photos
-- Instagram handle + WhatsApp business number
 - Service areas list
