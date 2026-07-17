@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw content staging (real photos from Prerna — uploaded to Supabase Storage via seed script, not committed)
+/content/images/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -18,7 +18,7 @@ No online booking or payments in this build — every "Book Now" hands off to In
 ### 2. Database schema + seed data
 - [ ] Create tables: `admin_users`, `categories`, `packages`, `package_products`, `package_images`, `package_addons`, `stylists`, `portfolio_images`, `service_areas`
 - [ ] Add indexes: `packages(category_id, is_active)`, `portfolio_images(category_id, is_active)`
-- [ ] Get real categories/packages/prices/products list from Prerna
+- [x] Get real categories/packages/prices/products list from Prerna — Party Makeup category received (Basic/HD/Glam), see [CONTENT.md](CONTENT.md); more categories still pending
 - [ ] Get stylist roster (names, photos, specialties, bios, socials) from Prerna
 - [ ] Get before/after photos for portfolio gallery
 - [ ] Get list of service areas from Prerna
