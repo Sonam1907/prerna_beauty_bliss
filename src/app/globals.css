@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff8f6;
+  --foreground: #2b1c1c;
 }
 
 @theme inline {
@@ -12,12 +12,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Fixed light theme — a dark-mode inversion doesn't suit this brand's soft
+   pink/cream palette, so we intentionally don't follow prefers-color-scheme. */
 
 body {
   background: var(--background);

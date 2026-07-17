@@ -1,65 +1,216 @@
-import Image from "next/image";
+import Link from "next/link";
+import { BookNowButton } from "@/components/BookNowButton";
+import {
+  getCategoriesWithPackages,
+  getPortfolioImages,
+  getStylists,
+} from "@/lib/data";
+import { formatPrice } from "@/lib/format";
 
-export default function Home() {
+const HYGIENE_PROMISE = [
+  "Sanitized Brushes After Every Client",
+  "Disposable Mascara Wands & Lip Applicators",
+  "Premium Quality Products",
+  "Long-lasting Waterproof Makeup",
+  "Customized Makeup According to Skin Type",
+];
+
+export default async function HomePage() {
+  const [categories, stylists, portfolioImages] = await Promise.all([
+    getCategoriesWithPackages(),
+    getStylists(),
+    getPortfolioImages(),
+  ]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* Hero */}
+      <section className="bg-gradient-to-b from-rose-100 via-rose-50 to-transparent">
+        <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-28">
+          <p className="text-sm font-semibold tracking-wide text-rose-600 uppercase">
+            Look Beautiful. Feel Confident.
           </p>
+          <h1 className="mt-4 text-4xl font-bold text-gray-900 sm:text-5xl">
+            Where Beauty <span className="text-rose-600">Meets</span>{" "}
+            Perfection
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-gray-600">
+            Professional makeup, mehendi, hairstyle, and draping services —
+            tailored just for you.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <BookNowButton label="Book Now" />
+            <Link
+              href="/services"
+              className="rounded-full border border-rose-300 px-6 py-3 text-sm font-semibold text-rose-700 transition hover:bg-rose-50"
+            >
+              Explore Services
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Services preview */}
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div className="text-center">
+          <p className="text-sm font-semibold tracking-wide text-rose-600 uppercase">
+            Our Services
+          </p>
+          <h2 className="mt-2 text-3xl font-bold text-gray-900">
+            Beauty Services Just For You
+          </h2>
         </div>
-      </main>
-    </div>
+
+        {categories.length === 0 ? (
+          <p className="mt-10 text-center text-gray-500">
+            Services are being added — check back soon.
+          </p>
+        ) : (
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.map((category) => {
+              const startingPrice =
+                category.packages.length > 0
+                  ? Math.min(...category.packages.map((p) => p.base_price))
+                  : null;
+
+              return (
+                <Link
+                  key={category.id}
+                  href={`/services#${category.slug}`}
+                  className="rounded-2xl border border-rose-100 bg-white p-6 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {category.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-500">
+                    {category.packages.length}{" "}
+                    {category.packages.length === 1 ? "package" : "packages"}
+                  </p>
+                  {startingPrice !== null && (
+                    <p className="mt-3 text-rose-600 font-semibold">
+                      From {formatPrice(startingPrice)}
+                    </p>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      {/* Before & After — only shown once portfolio photos exist */}
+      {portfolioImages.length > 0 && (
+        <section className="bg-rose-50/60 py-16">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="text-center">
+              <p className="text-sm font-semibold tracking-wide text-rose-600 uppercase">
+                Before & After
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-gray-900">
+                Real Transformations, Real Confidence
+              </h2>
+            </div>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {portfolioImages.map((image) => (
+                <div
+                  key={image.id}
+                  className="overflow-hidden rounded-2xl border border-rose-100 bg-white shadow-sm"
+                >
+                  <div className="grid grid-cols-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={image.before_image_url}
+                      alt="Before"
+                      className="h-48 w-full object-cover"
+                    />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={image.after_image_url}
+                      alt="After"
+                      className="h-48 w-full object-cover"
+                    />
+                  </div>
+                  {image.caption && (
+                    <p className="p-3 text-sm text-gray-600">
+                      {image.caption}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Meet the Team — only shown once stylists exist */}
+      {stylists.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className="text-center">
+            <p className="text-sm font-semibold tracking-wide text-rose-600 uppercase">
+              Our Experts
+            </p>
+            <h2 className="mt-2 text-3xl font-bold text-gray-900">
+              Meet Our Team
+            </h2>
+          </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
+            {stylists.map((stylist) => (
+              <div key={stylist.id} className="text-center">
+                <div className="mx-auto h-28 w-28 overflow-hidden rounded-full bg-rose-100">
+                  {stylist.photo_url && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={stylist.photo_url}
+                      alt={stylist.name}
+                      className="h-full w-full object-cover"
+                    />
+                  )}
+                </div>
+                <p className="mt-3 font-semibold text-gray-900">
+                  {stylist.name}
+                </p>
+                {stylist.specialty && (
+                  <p className="text-sm text-gray-500">{stylist.specialty}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Hygiene & Quality Promise */}
+      <section className="bg-rose-50/60 py-16">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <p className="text-sm font-semibold tracking-wide text-rose-600 uppercase">
+            Hygiene & Quality Promise
+          </p>
+          <h2 className="mt-2 text-3xl font-bold text-gray-900">
+            Your Safety, Our Priority
+          </h2>
+          <ul className="mx-auto mt-8 grid max-w-2xl gap-4 text-left sm:grid-cols-2">
+            {HYGIENE_PROMISE.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-gray-700">
+                <span className="mt-0.5 text-rose-600">✔️</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Book Now CTA banner */}
+      <section className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6">
+        <h2 className="text-2xl font-bold text-gray-900">
+          Ready to book your appointment?
+        </h2>
+        <p className="mt-2 text-gray-600">
+          Message us directly — we&apos;ll confirm availability and all the
+          details.
+        </p>
+        <div className="mt-6">
+          <BookNowButton label="Book Now" />
+        </div>
+      </section>
+    </>
   );
 }

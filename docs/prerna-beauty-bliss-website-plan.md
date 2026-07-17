@@ -52,9 +52,9 @@ Because the business is small and Prerna prefers to handle scheduling and paymen
 **Stylists page (`/stylists`)** — full team roster with bios
 
 **"Book Now" component** — used everywhere (header, package cards, package detail, CTA banners). Opens a small modal or dropdown with two buttons:
-- "Message on Instagram" → `https://ig.me/m/<handle>`
-- "Message on WhatsApp" → `https://wa.me/<number>?text=<url-encoded prefilled message>`
-- When triggered from a specific package, the pre-filled text includes that package's name/price (e.g. "Hi! I'm interested in the Bridal Glow Package (₹15,000). Please let me know availability."). When triggered generically (header CTA), a generic greeting is used instead.
+- "Message on Instagram" → `https://ig.me/m/<handle>` — opens the DM thread only; Instagram's deep link doesn't support pre-filled message text (unlike WhatsApp), so the customer types their own message
+- "Message on WhatsApp" → `https://wa.me/<number>?text=<url-encoded prefilled message>` — arrives with the message already typed in
+- When triggered from a specific package, WhatsApp's pre-filled text includes that package's name/price (e.g. "Hi! I'm interested in the Bridal Glow Package (₹15,000). Please let me know availability."). When triggered generically (header CTA), a generic greeting is used instead.
 
 ---
 
