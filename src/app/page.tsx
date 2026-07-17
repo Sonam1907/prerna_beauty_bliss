@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BookNowButton } from "@/components/BookNowButton";
 import {
@@ -25,16 +26,25 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-rose-100 via-rose-50 to-transparent">
-        <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-28">
-          <p className="text-sm font-semibold tracking-wide text-rose-600 uppercase">
+      <section className="relative isolate overflow-hidden">
+        <Image
+          src="/images/hero-background.jpg"
+          alt="Bridal makeup by Prerna Beauty Bliss"
+          fill
+          priority
+          className="object-cover object-[70%_20%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+
+        <div className="relative mx-auto max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-32">
+          <p className="text-sm font-semibold tracking-wide text-rose-300 uppercase">
             Look Beautiful. Feel Confident.
           </p>
-          <h1 className="mt-4 text-4xl font-bold text-gray-900 sm:text-5xl">
-            Where Beauty <span className="text-rose-600">Meets</span>{" "}
+          <h1 className="mt-4 text-4xl font-bold text-white sm:text-5xl">
+            Where Beauty <span className="text-rose-400">Meets</span>{" "}
             Perfection
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-gray-600">
+          <p className="mx-auto mt-4 max-w-xl text-gray-200">
             Professional makeup, mehendi, hairstyle, and draping services —
             tailored just for you.
           </p>
@@ -42,7 +52,7 @@ export default async function HomePage() {
             <BookNowButton label="Book Now" />
             <Link
               href="/services"
-              className="rounded-full border border-rose-300 px-6 py-3 text-sm font-semibold text-rose-700 transition hover:bg-rose-50"
+              className="rounded-full border border-white/70 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               Explore Services
             </Link>
