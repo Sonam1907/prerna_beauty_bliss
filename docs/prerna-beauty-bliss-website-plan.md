@@ -62,7 +62,7 @@ Because the business is small and Prerna prefers to handle scheduling and paymen
 
 | Layer | Choice | Why |
 |---|---|---|
-| Frontend + backend | **Next.js 14 (App Router)**, TypeScript | One codebase, server-side rendering for SEO ("bridal makeup artist near me"), image optimization built in |
+| Frontend + backend | **Next.js (latest stable, App Router)**, TypeScript | One codebase, server-side rendering for SEO ("bridal makeup artist near me"), image optimization built in |
 | Styling | Tailwind CSS | Fast to build, small bundle |
 | Database | **Postgres via Supabase** (free tier) | Free managed Postgres + built-in Auth + file Storage, all in one free project — lets Prerna update prices/photos/stylists herself without a developer |
 | Auth (admin) | Supabase Auth, email OTP (magic code, no password) | One login for Prerna — nothing to forget or leak, just a code sent to her email each time |
