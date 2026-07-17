@@ -2,7 +2,11 @@
 
 Source of truth for seeding the database and writing site copy. Update this file as more content arrives from Prerna — it's structured to map directly onto the schema in [prerna-beauty-bliss-website-plan.md](prerna-beauty-bliss-website-plan.md), so it can be turned into a seed script once Supabase is set up.
 
-**Images:** create a local folder at `content/images/<category-slug>/<package-slug>/` in the project root (e.g. `content/images/party-makeup/basic-party-makeup/`) and drop the relevant photos in there. That folder is git-ignored (see note below) — images don't get committed directly to git, they'll be uploaded to Supabase Storage via a one-time seed script once the project is set up, and only the resulting URLs get stored in the database.
+**Images:** drop photos in the `Images/` folder at the project root (that's the convention already in use). It's git-ignored — images don't get committed directly to git, they'll be uploaded to Supabase Storage via a one-time seed script once the project is set up, and only the resulting URLs get stored in the database. Current files received:
+- `Basic_party_makeup.jpeg` → Basic Party Makeup package
+- `HD_party_makeup.jpeg` → HD Party Makeup package
+- `glam_makeup.jpeg` → Glam Makeup package
+- `HD_Bridal_makeup.jpeg` → doesn't match any package received so far (no Bridal Makeup content yet) — holding as pending until the Bridal Makeup category details arrive
 
 ---
 

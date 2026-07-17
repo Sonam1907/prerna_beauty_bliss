@@ -38,6 +38,7 @@ yarn-error.log*
 
 # raw content staging (real photos from Prerna — uploaded to Supabase Storage via seed script, not committed)
 /content/images/
+/Images/
 
 # typescript
 *.tsbuildinfo
