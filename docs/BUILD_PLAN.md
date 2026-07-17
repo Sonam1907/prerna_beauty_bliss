@@ -9,45 +9,40 @@ No online booking or payments in this build — every "Book Now" hands off to In
 ## Phase 1 — MVP (launch this first)
 
 ### 1. Project setup
-- [ ] Initialize Next.js 14 (App Router) + TypeScript
-- [ ] Install & configure Tailwind CSS
-- [ ] Create Supabase project (Postgres + Auth + Storage)
-- [ ] Connect Vercel project, confirm auto-deploy from main branch
-- [ ] Set up env vars (local `.env.local` + Vercel project settings)
+- [x] Initialize Next.js (latest stable, App Router) + TypeScript
+- [x] Install & configure Tailwind CSS
+- [x] Create Supabase project (Postgres + Auth + Storage)
+- [x] Connect Vercel project, confirm auto-deploy from main branch
+- [x] Set up env vars (local `.env.local` + Vercel project settings)
 
 ### 2. Database schema + seed data
-- [ ] Create tables: `admin_users`, `categories`, `packages`, `package_products`, `package_images`, `package_addons`, `stylists`, `portfolio_images`, `service_areas`
-- [ ] Add indexes: `packages(category_id, is_active)`, `portfolio_images(category_id, is_active)`
-- [x] Get real categories/packages/prices/products list from Prerna — Party Makeup category received (Basic/HD/Glam), see [CONTENT.md](CONTENT.md); more categories still pending
+- [x] Create tables: `admin_users`, `categories`, `packages`, `package_products`, `package_images`, `package_addons`, `stylists`, `portfolio_images`, `service_areas`
+- [x] Add indexes: `packages(category_id, is_active)`, `portfolio_images(category_id, is_active)`
+- [x] Get real categories/packages/prices/products list from Prerna — Party Makeup (Basic/HD/Glam) fully detailed; Bridal Makeup (Basic/Engagement-Reception/HD) prices only so far; see [CONTENT.md](CONTENT.md)
 - [ ] Get stylist roster (names, photos, specialties, bios, socials) from Prerna
 - [ ] Get before/after photos for portfolio gallery
 - [ ] Get list of service areas from Prerna
-- [ ] Seed DB with real data
+- [x] Seed DB with real data — Party Makeup seeded ([seed.sql](../supabase/seed.sql)); Bridal Makeup seed ready to run ([seed_bridal_makeup.sql](../supabase/seed_bridal_makeup.sql))
 
 ### 3. Public pages
-- [ ] Homepage: header/nav + sticky "Book Now" CTA
-- [ ] Homepage: hero section (headline, dual CTA, trust badges)
-- [ ] Homepage: services preview (category cards linking to `/services#slug`)
-- [ ] Homepage: before/after transformations gallery
-- [ ] Homepage: "Meet the Team" stylist grid → `/stylists`
-- [ ] Homepage: Book Now banner + trust badges strip + photo gallery strip + footer
-- [ ] Services page (`/services`) — all categories as anchor-linked sections, package cards per section
-- [ ] Package detail page (`/services/[category]/[package-slug]`) — photos, description, products/brands, price, duration, add-ons
-- [ ] Stylists page (`/stylists`) — full team roster
-- [ ] `GET /api/categories`
-- [ ] `GET /api/packages` (filter by category)
-- [ ] `GET /api/packages/[slug]`
-- [ ] `GET /api/stylists`
-- [ ] `GET /api/portfolio` (filter by category)
-- [ ] `GET /api/service-areas`
+- [x] Homepage: header/nav + sticky "Book Now" CTA
+- [x] Homepage: hero section (headline, dual CTA)
+- [x] Homepage: services preview (category cards linking to `/services#slug`)
+- [x] Homepage: before/after transformations gallery — built, auto-hides until portfolio photos are seeded
+- [x] Homepage: "Meet the Team" stylist grid — built, auto-hides until stylists are seeded (no separate `/stylists` page yet)
+- [x] Homepage: Book Now CTA banner + footer; hygiene-promise section used in place of generic trust badges (real Prerna copy)
+- [x] Services page (`/services`) — all categories as anchor-linked sections, package cards per section
+- [x] Package detail page (`/services/[category]/[package-slug]`) — photos, description, products/brands, price, duration, add-ons
+- [ ] Stylists page (`/stylists`) — full team roster (not needed until stylist content exists)
+- [x] Data layer reads Supabase directly from Server Components — no separate public REST API routes (`/api/categories` etc.) built, since App Router doesn't need that indirection for server-rendered reads
 
 ### 4. "Book Now" contact handoff
-- [ ] Reusable Book Now component (modal/dropdown with Instagram + WhatsApp buttons)
-- [ ] Instagram DM link: `https://ig.me/m/<handle>`
-- [ ] WhatsApp click-to-chat link: `https://wa.me/<number>?text=...`
-- [ ] Pre-fill message with package name + price when triggered from a package card/detail page
-- [ ] Generic pre-fill message when triggered from header/global CTA
-- [ ] Test both links on mobile (app deep-link) and desktop (web fallback)
+- [x] Reusable Book Now component (dropdown with Instagram + WhatsApp buttons)
+- [x] Instagram DM link: `https://ig.me/m/<handle>` — live with real handle @prerna_beauty_bliss_
+- [x] WhatsApp click-to-chat link: `https://wa.me/<number>?text=...` — live with real number
+- [x] Pre-fill message with package name + price when triggered from a package detail page (WhatsApp only — Instagram's deep link doesn't support pre-filled text)
+- [x] Generic pre-fill message when triggered from header/global CTA
+- [ ] Test both links on mobile (app deep-link) and desktop (web fallback) — verified links resolve correctly server-side; still needs an actual on-phone tap-through by Prerna/Sonam
 
 ### 5. Admin auth + content management
 - [ ] Supabase Auth login for admin

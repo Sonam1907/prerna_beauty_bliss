@@ -6,7 +6,7 @@ Source of truth for seeding the database and writing site copy. Update this file
 - `Basic_party_makeup.jpeg` → Basic Party Makeup package
 - `HD_party_makeup.jpeg` → HD Party Makeup package
 - `glam_makeup.jpeg` → Glam Makeup package
-- `HD_Bridal_makeup.jpeg` → doesn't match any package received so far (no Bridal Makeup content yet) — holding as pending until the Bridal Makeup category details arrive
+- `HD_Bridal_makeup.jpeg` → Bridal HD Makeup package
 
 ---
 
@@ -34,6 +34,25 @@ Source of truth for seeding the database and writing site copy. Update this file
 
 ---
 
+## Category: Bridal Makeup (slug: `bridal-makeup`)
+
+Prices only so far — suitable-for notes and product lists to be filled in once Prerna sends them.
+
+### Package: Basic Bridal Makeup (slug: `basic-bridal-makeup`)
+- Price: ₹5,999
+- Products used: pending
+
+### Package: Engagement/Reception Makeup (slug: `engagement-reception-makeup`)
+- Price: ₹4,000
+- Products used: pending
+
+### Package: Bridal HD Makeup (slug: `bridal-hd-makeup`)
+- Price: ₹8,000
+- Products used: pending
+- Image: `HD_Bridal_makeup.jpeg`
+
+---
+
 ## Site-wide content (not tied to a single package)
 
 ### Premium Product Brands Used
@@ -57,7 +76,8 @@ This replaces the generic trust-badge placeholder copy ("Expert Stylists", "Hygi
 - WhatsApp: +91 88279 87837
 
 ## Still needed from Prerna
-- Categories beyond Party Makeup (Bridal Makeup, Mehendi, Hairstyle, Draping, etc.) with the same level of detail
+- Bridal Makeup: suitable-for notes + product lists for the 3 packages above
+- Categories beyond Party Makeup and Bridal Makeup (Mehendi, Hairstyle, Draping, etc.) with the same level of detail
 - Package add-ons, if any (e.g. extra hairstyle change, saree draping add-on)
 - Stylist roster (names, photos, specialties, bios, socials)
 - Before/after portfolio photos

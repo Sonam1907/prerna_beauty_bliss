@@ -128,15 +128,9 @@ Standard authenticated CRUD screens: package editor (with image upload to Supaba
 
 ## 6. API endpoints (Next.js route handlers)
 
-```
-Public
-  GET  /api/categories
-  GET  /api/packages                 (filter by category)
-  GET  /api/packages/[slug]
-  GET  /api/stylists
-  GET  /api/portfolio                (filter by category)
-  GET  /api/service-areas
+**Public reads — implemented as direct Supabase calls from Server Components, not REST routes.** Since public pages are server-rendered in the App Router, there's no separate client that needs a `/api/categories`-style endpoint to call — the page component queries Supabase directly (via `src/lib/data.ts`), protected by the same RLS read-only policies either way. The routes below are kept only for admin writes, which do need an endpoint (called from client-side admin forms).
 
+```
 Admin (auth required)
   GET/POST/PATCH/DELETE /api/admin/packages
   GET/POST/PATCH/DELETE /api/admin/packages/[id]/products
